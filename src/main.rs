@@ -114,11 +114,15 @@ impl TimerFuture {
 
 fn main() {
     let (executor, spawner) = new_executor_and_spawner();
+
     spawner.spawn(async {
         println!("Radith's Computer: howdy!");
         TimerFuture::new(Duration::from_secs(2)).await;
         println!("Radith's Computer: done!");
     });
+
+    println!("Radith's Computer: hey hey");
+
     drop(spawner);
     executor.run();
 }
